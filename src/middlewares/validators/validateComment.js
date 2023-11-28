@@ -8,12 +8,3 @@ export const validateCreateComment = [
         .isLength(24)
         .withMessage("La id del autor debe ser de 24 caracteres")
 ]
-
-export const validateUpdateComment = [
-    body("description")
-        .isLength({ min: 6 })
-        .withMessage("El comentario debe tener al menos 6 caracteres"),
-    body("autor")
-        .isLength(24)
-        .withMessage("La id del autor debe ser de 24 caracteres")
-]

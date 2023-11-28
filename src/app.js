@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser"
 import { connectMongo } from './database/db.js'
 import indexRouter from './routes/index.routes.js'
 
+
 export const app = express()
 connectMongo()
 
@@ -14,4 +15,3 @@ app.use(cookieParser());
 app.use(cors());
 
 app.use(indexRouter)
-
