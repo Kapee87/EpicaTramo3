@@ -14,7 +14,8 @@ const controller = {
             const newUser = new User({
                 username,
                 email,
-                password: passwordHash
+                password: passwordHash,
+                avatarUrl
             })
             const userSaved = await newUser.save()
 
