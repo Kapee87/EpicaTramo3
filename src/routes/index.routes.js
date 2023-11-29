@@ -8,9 +8,9 @@ const router = Router()
 
 router.use("/auth", authRouter)
 
-router.use(authRequired, postRouter)
+router.use("/post", authRequired, postRouter)
 
-router.use(authRequired, commentsRouter)
+router.use("/comment", authRequired, commentsRouter)
 
 
 export default router

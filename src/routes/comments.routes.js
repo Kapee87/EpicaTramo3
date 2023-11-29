@@ -8,10 +8,10 @@ const router = Router()
 const { getAllComments, getCommentById, createComment, updateCommnent, deleteComment } = controller
 
 
-router.get("/comments/all", getAllComments)
-router.get("/comments/:id", getCommentById)
-router.post("/comments", validateCreateComment, handleErrorValidations, createComment)
-router.put("/comments/:id", updateCommnent)
-router.delete("/comments/:id", deleteComment)
+router.get("/all", getAllComments)
+router.get("/:id", getCommentById)
+router.post("", validateCreateComment, handleErrorValidations, createComment)
+router.put("/:id", updateCommnent)
+router.delete("/:id", deleteComment)
 
 export default router

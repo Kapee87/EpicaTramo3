@@ -9,10 +9,10 @@ const router = Router()
 const { getAllPosts, getPostById, createPost, updatePost, deletePost } = controller
 
 
-router.get("/post/all", getAllPosts)
-router.get("/post/:id", getPostById)
-router.post("/post", validateCreatePost, handleErrorValidations, createPost)
-router.put("/post/:id", updatePost)
-router.delete("/post/:id", deletePost)
+router.get("/all", getAllPosts)
+router.get("/:id", getPostById)
+router.post("", validateCreatePost, handleErrorValidations, createPost)
+router.put("/:id", updatePost)
+router.delete("/:id", deletePost)
 
 export default router
