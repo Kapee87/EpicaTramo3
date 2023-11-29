@@ -6,7 +6,7 @@ import { createAccessToken } from "../middlewares/jwt.validator.js";
 const controller = {
 
     register: async (req, res) => {
-        const { username, email, password } = req.body
+        const { username, email, password, avatarUrl } = req.body
 
         try {
             const passwordHash = await bcrypt.hash(password, 10)
@@ -25,7 +25,8 @@ const controller = {
                 message: "Usuario registrado con éxito",
                 id: userSaved.id,
                 username: userSaved.username,
-                email: userSaved.emnail,
+                email: userSaved.email,
+                avatarUrl: userSaved.avatarUrl
             })
 
         } catch (error) {
@@ -59,7 +60,6 @@ const controller = {
             });
         } catch (error) {
             return res.status(500).json({ message: "Error al loguearse", error });
-            console.log(error)
         }
     },
     logout: async (req, res) => {
