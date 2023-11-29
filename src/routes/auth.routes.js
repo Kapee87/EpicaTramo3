@@ -13,7 +13,7 @@ const { register, login, logout, profile, updateUser } = authController
 router.post("/register", validateRegister, handleErrorValidations, register)
 
 //Rutas para iniciar sesión
-router.post("/login",  login) //validateLogin, handleErrorValidations,
+router.post("/login", login) //validateLogin, handleErrorValidations,
 
 router.post("/logout", logout)
 

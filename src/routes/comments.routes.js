@@ -10,7 +10,7 @@ const { getAllComments, getCommentById, createComment, updateCommnent, deleteCom
 
 router.get("/all", getAllComments)
 router.get("/:id", getCommentById)
-router.post("", validateCreateComment, handleErrorValidations, createComment)
+router.post("/", validateCreateComment, handleErrorValidations, createComment)
 router.put("/:id", updateCommnent)
 router.delete("/:id", deleteComment)
 
