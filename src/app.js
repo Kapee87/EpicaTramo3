@@ -15,3 +15,10 @@ app.use(cookieParser());
 app.use(cors());
 
 app.use(indexRouter)
+
+app.get("/", res.status(200).send(`
+    <div
+        style="display: flex; justify-content: center; justify-items: center; min-height: 100vh;width: 100%; background-color: bisque;">
+        <h1>Api | epicJourney</h1>
+    </div>
+`))
