@@ -1,8 +1,8 @@
-# Plataforma Interactiva de Viajes - Backend
+# Plataforma Interactiva del blog de Viajes - Backend
 
 Bienvenido al repositorio del backend de la Plataforma Interactiva de Viajes. Este proyecto tiene como objetivo proporcionar a los amantes de los viajes un espacio en línea para compartir y descubrir experiencias únicas. Aquí encontrarás las instrucciones para configurar el proyecto localmente y contribuir al desarrollo.
 
-- [Plataforma Interactiva de Viajes - Backend](#plataforma-interactiva-de-viajes---backend)
+- [Plataforma Interactiva del blog de Viajes - Backend](#plataforma-interactiva-del-blog-de-viajes---backend)
   - [Descripción del Proyecto](#descripción-del-proyecto)
   - [Criterios de Evaluación](#criterios-de-evaluación)
     - [Funcionalidad](#funcionalidad)
