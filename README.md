@@ -18,7 +18,6 @@ Bienvenido al repositorio del backend de la Plataforma Interactiva de Viajes. Es
     - [Configuración del Backend](#configuración-del-backend)
     - [Enlaces Útiles](#enlaces-útiles)
     - [Contribuir](#contribuir)
-  - [¡Diviértete programando! 😄🚀](#diviértete-programando-)
 
 ## Descripción del Proyecto
 
@@ -102,8 +101,6 @@ Desarrollamos una plataforma web centrada en experiencias de viajes que permite 
 3. Realizar tus cambios y hacer commit: `git commit -m 'Añade nueva funcionalidad'`.
 4. Hacer push a la rama: `git push origin nueva-funcionalidad`.
 5. Abrir un pull request.
-
-## ¡Diviértete programando! 😄🚀
 
 ---
 
