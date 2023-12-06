@@ -92,6 +92,16 @@ const controller = {
         } catch (error) {
             returnnext(error)
         }
+    },
+    getUsers: async (req, res) => {
+        try {
+            const getUsers = await User.find()
+            return res.status(200).json({
+                getUsers
+            })
+        } catch (error) {
+            console.log("pasaron cosas");
+        }
     }
 }
 

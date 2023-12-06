@@ -3,7 +3,7 @@ import PostModel from '../models/Post.model.js'
 const controller = {
     getAllPosts: async (req, res) => {
         try {
-            const posts = await PostModel.find().populate('User')
+            const posts = await PostModel.find().populate('autor').populate('comments')
 
             return posts.length > 0 ?
                 res.status(200).json({
@@ -17,14 +17,14 @@ const controller = {
 
         } catch (error) {
             return res.status(500).json({
-                message: "Error traer los posts ",
+                message: "Error al traer los posts ",
                 error
             })
         }
     },
     getPostById: async (req, res) => {
         try {
-            const post = await PostModel.findOne({ _id: req.params.id }).populate('User').populate('Comment')
+            const post = await PostModel.findOne({ _id: req.params.id }).populate('autor').populate('comments')
             return res.status(200).json({
                 message: "Post encontrado con éxito",
                 post

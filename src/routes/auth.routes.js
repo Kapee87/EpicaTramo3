@@ -7,7 +7,7 @@ import { validateLogin, validateRegister } from '../middlewares/validators/valid
 
 const router = Router()
 
-const { register, login, logout, profile, updateUser } = authController
+const { register, login, logout, profile, updateUser, getUsers } = authController
 
 //Rutas para registro de usuario
 router.post("/register", validateRegister, handleErrorValidations, register)
@@ -21,5 +21,6 @@ router.post("/profile", authRequired, profile)
 
 router.post("/editProfile", authRequired, updateUser)
 
+router.post("/users", getUsers)
 
 export default router
