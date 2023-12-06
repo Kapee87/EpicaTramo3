@@ -18,7 +18,7 @@ const postSchema = new Schema({
     },
     autor: {
         type: Types.ObjectId,
-        ref: 'Posts',
+        ref: 'User',
         required: true,
 
     },
