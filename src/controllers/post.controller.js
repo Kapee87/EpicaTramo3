@@ -29,7 +29,12 @@ const controller = {
     },
     getPostById: async (req, res) => {
         try {
-            const post = await PostModel.findOne({ _id: req.params.id }).populate('User').populate('Comment')
+            const post = await PostModel.findOne({ _id: req.params.id }).populate('autor').populate({
+                path: 'comments',
+                populate: [
+                    { path: 'autor' }
+                ]
+            })
             return res.status(200).json({
                 message: "Post encontrado con éxito",
                 post
