@@ -3,7 +3,12 @@ import PostModel from '../models/Post.model.js'
 const controller = {
     getAllPosts: async (req, res) => {
         try {
-            const posts = await PostModel.find().populate('autor').populate('comments')
+            const posts = await PostModel.find().populate('autor').populate({
+                path: 'comments',
+                populate: [
+                    { path: 'autor' }
+                ]
+            })
 
             return posts.length > 0 ?
                 res.status(200).json({
@@ -24,7 +29,7 @@ const controller = {
     },
     getPostById: async (req, res) => {
         try {
-            const post = await PostModel.findOne({ _id: req.params.id }).populate('autor').populate('comments')
+            const post = await PostModel.findOne({ _id: req.params.id }).populate('User').populate('Comment')
             return res.status(200).json({
                 message: "Post encontrado con éxito",
                 post

@@ -8,9 +8,8 @@ const commentSchema = new Schema({
     },
     autor: {
         type: Types.ObjectId,
-        ref: 'Users',
+        ref: 'User',
         required: true,
-
     }
 }, {
     timestamps: true,
