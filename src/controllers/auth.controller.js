@@ -26,7 +26,8 @@ const controller = {
                 id: userSaved.id,
                 username: userSaved.username,
                 email: userSaved.email,
-                avatarUrl: userSaved.avatarUrl
+                avatarUrl: userSaved.avatarUrl,
+                token: token
             })
 
         } catch (error) {
@@ -57,6 +58,7 @@ const controller = {
                 message: "Bienvenido!",
                 username: userFound.username,
                 email: userFound.email,
+                token: token
             });
         } catch (error) {
             return res.status(500).json({ message: "Error al loguearse", error });
