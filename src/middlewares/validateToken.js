@@ -6,7 +6,7 @@ const { secret } = settingDotEnvSecret()
 export const authRequired = (req, res, next) => {
     console.log('middleware')
 
-    const { token } = req.cookies
+    const token = req.body.token
 
     if (!token) return res.status(401).json({ message: "Autorizacion denegada, no hay token" })
 

@@ -11,10 +11,7 @@ connectMongo()
 app.use(morgan("tiny"))
 app.use(express.json())
 app.use(cookieParser());
-app.use(cors({
-    origin: "http://https://epicjourney.onrender.com",
-    credentials: true
-}));
+app.use(cors());
 
 app.use(indexRouter)
 

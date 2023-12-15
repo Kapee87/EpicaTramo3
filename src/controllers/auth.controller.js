@@ -15,15 +15,19 @@ const controller = {
                 username,
                 email,
                 password: passwordHash,
-                avatarUrl
+                avatarUrl,
+                online: true
             })
             const userSaved = await newUser.save()
 
             const token = await createAccessToken({ id: userSaved._id })
-            res.cookie("token", token)
+
+            console.log(userSaved);
+
+            // res.cookie("token", token)
             return res.json({
                 message: "Usuario registrado con éxito",
-                id: userSaved.id,
+                id: userSaved._id,
                 username: userSaved.username,
                 email: userSaved.email,
                 avatarUrl: userSaved.avatarUrl,
@@ -31,8 +35,8 @@ const controller = {
             })
 
         } catch (error) {
-            return res.status(500).json({
-                message: "Error al registrar al Usuario ",
+            return res.status(400).json({
+                controllermsj: "Error al registrar al Usuario ",
                 error
             })
         }
@@ -47,17 +51,23 @@ const controller = {
                 return res.status(400).json({ message: "Usuario no encontrado" });
 
             const match = await bcrypt.compare(password, userFound.password);
+
             if (!match)
                 return res.status(400).json({ message: "Contraseña incorrecta" });
+
 
             //Debemos generar el token nuevamente
 
             const token = await createAccessToken({ id: userFound._id });
             res.cookie("token", token);
-            return res.json({
-                message: "Bienvenido!",
+            const online = await User.findByIdAndUpdate(userFound._id, {
+                online: true
+            })
+            console.log(online);
+            return res.status(200).json({
                 username: userFound.username,
                 email: userFound.email,
+                avatarUrl: userFound.avatarUrl,
                 token: token
             });
         } catch (error) {
@@ -65,14 +75,26 @@ const controller = {
         }
     },
     logout: async (req, res) => {
-        res.cookie("token", "", { expires: new Date(0) })
-        return res.status(200).json({ message: "Vuelvas prontos!" })
+        const userId = req.body._id
+        try {
+            const userFound = await User.findById(userId)
+            if (!userFound.online) return res.status(400).json({ message: "La sesión no está iniciada o expiró." })
+            const userLoggedOut = await User.findByIdAndUpdate(userId, {
+                online: false
+            })
+            res.cookie("token", "", { expires: new Date(0) })
+            return res.status(200).json({ message: "Vuelvas prontos!", token: null })
+        } catch (error) {
+            console.log(error);
+        }
     },
     profile: async (req, res) => {
         try {
             const userFound = await User.findById(req.user.id);
             if (!userFound)
                 return res.status(400).json({ message: "Usuario no encontrado" });
+            if (!userFound.online)
+                return res.status(400).json({ message: "La sesión expiró o no se inició" });
 
             return res.json({
                 message: "Perfil",
