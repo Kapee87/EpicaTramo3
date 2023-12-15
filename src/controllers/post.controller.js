@@ -48,6 +48,7 @@ const controller = {
         }
     },
     createPost: async (req, res) => {
+        console.log('controller');
         try {
             const newPost = await PostModel.create(req.body)
             return res.status(200).json({

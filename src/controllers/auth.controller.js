@@ -68,6 +68,7 @@ const controller = {
                 username: userFound.username,
                 email: userFound.email,
                 avatarUrl: userFound.avatarUrl,
+                _id: userFound._id,
                 token: token
             });
         } catch (error) {
@@ -96,13 +97,9 @@ const controller = {
             if (!userFound.online)
                 return res.status(400).json({ message: "La sesión expiró o no se inició" });
 
-            return res.json({
-                message: "Perfil",
-                userFound
-
-            });
+            return res.json(userFound);
         } catch (error) {
-            return res.status(500).json({ message: "Error en el perfil", error });
+            return res.send("Error localizando el perfil");
         }
     },
     updateUser: async (req, res) => {
