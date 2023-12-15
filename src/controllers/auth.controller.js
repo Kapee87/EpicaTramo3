@@ -122,8 +122,21 @@ const controller = {
             })
         } catch (error) {
             console.log("pasaron cosas");
+            return res.status(500).send('no se pudo ejecutar la acción, intente de nuevo más tarde')
+        }
+    },
+    deleteUser: async (req, res) => {
+        console.log('controller', req.params);
+        try {
+            const deletedUser = await User.findByIdAndDelete(req.params.id)
+            console.log(deletedUser);
+            return res.status(200).json({ message: 'Usuario borrado con éxito', deletedUser })
+        } catch (error) {
+            console.log('no se pudo borrar');
+            return res.status(500).send('no se pudo ejecutar la acción, intente de nuevo más tarde')
         }
     }
+
 }
 
 
